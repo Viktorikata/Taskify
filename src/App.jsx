@@ -7,8 +7,14 @@ import TaskList from "./components/TaskList"
 function App() {
   const [tasks, setTasks] = useState([]);
 
+  // Обработка добавления новой задачи
   const handleAddTask = (newTask) => {
     setTasks ((prev) => [...prev, newTask]);
+  };
+
+  // Обработка удаления задачи
+  const handleDeleteTask = (idToDelete) => {
+    setTasks((prev) => prev.filter((task) => task.id !== idToDelete));
   };
 
   return (
@@ -17,7 +23,7 @@ function App() {
       <TaskForm onAdd={handleAddTask}/>
       <CategoryFilter />
       <StatusFilter />
-      <TaskList task={tasks} />
+      <TaskList task={tasks} onDelete={handleDeleteTask}/>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-function TaskList ({tasks}) {
+function TaskList ({tasks, onDelete}) {
   if (tasks.length === 0) {
     return <p>Нет задач</p>
   }
@@ -8,6 +8,11 @@ function TaskList ({tasks}) {
       {tasks.map((t) =>(
         <li key={t.id}>
           {t.title} - <em>{t.category}</em>
+          <button 
+          onClick={() => onDelete(t.id)}
+          style={{marginLeft: "10px"}}>
+          ❌
+          </button>
         </li>
       ))}
     </ul>
