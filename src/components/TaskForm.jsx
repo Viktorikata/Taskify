@@ -25,10 +25,10 @@ function TaskForm({onAdd}) {
         <form onSubmit={handleSubmit} style={{marginBottom: "20px"}}>
             <input
                 type="text"
-                placeHolder="Новая задача..."  
+                placeholder="Новая задача..."  
                 value={title}          
                 onChange={(e) => setTitle(e.target.value)}
-                style={{padding: "8px", width: "60px"}}
+                style={{padding: "8px", width: "100px"}}
                 />
 
                 <select
@@ -36,9 +36,9 @@ function TaskForm({onAdd}) {
                 onChange={(e)=> setCategory(e.target.value)}
                 style={{padding:"8px", margin: "10px"}}
                 >
-                    <option value="Личное"></option>
-                    <option value="Работа"></option>
-                    <option value="Учёба"></option>
+                    <option value="Личное">Личное</option>
+                    <option value="Работа">Работа</option>
+                    <option value="Учёба">Учёба</option>
                 </select>
 
                 <button type="submit" style={{padding: "8px 12px", marginLeft: "10px"}}>
