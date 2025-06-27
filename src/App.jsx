@@ -3,6 +3,7 @@ import TaskForm from "./components/TaskForm";
 import CategoryFilter from "./components/CategoryFilter";
 import StatusFilter from "./components/StatusFilter";
 import TaskList from "./components/TaskList"
+import "./App.css";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -48,7 +49,7 @@ function App() {
   };
 
   return (
-    <div style={{padding: "20px", maxWidth: "600px", margin: "0 auto"}}>
+    <div className="container">
       <h1>Taskify</h1>
       <TaskForm onAdd={handleAddTask}/>
       <CategoryFilter onCategoryChange={handleCategoryChange} />

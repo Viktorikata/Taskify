@@ -13,11 +13,11 @@ function TaskList ({tasks, onDelete, onToggle}) {
             onChange={()=> onToggle(t.id)}
             />
           <span style={{textDecoration: t.completed ? "line-through" : "none"}}>
-            {t.title} - <em>{t.category}</em>
+            {t.title} - <u>{t.category}</u>
           </span>
           <button 
           onClick={() => onDelete(t.id)}
-          style={{marginLeft: "10px"}}>
+          >
           ❌
           </button>
         </li>
