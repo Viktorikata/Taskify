@@ -1,4 +1,4 @@
-function TaskList ({tasks, onDelete}) {
+function TaskList ({tasks, onDelete, onToggle}) {
   if (tasks.length === 0) {
     return <p>Нет задач</p>
   }
@@ -7,7 +7,14 @@ function TaskList ({tasks, onDelete}) {
     <ul>
       {tasks.map((t) =>(
         <li key={t.id}>
-          {t.title} - <em>{t.category}</em>
+          <input
+            type="checkbox"
+            checked={t.completed}
+            onChange={()=> onToggle(t.id)}
+            />
+          <span style={{textDecoration: t.completed ? "line-through" : "none"}}>
+            {t.title} - <em>{t.category}</em>
+          </span>
           <button 
           onClick={() => onDelete(t.id)}
           style={{marginLeft: "10px"}}>

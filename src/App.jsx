@@ -7,6 +7,7 @@ import TaskList from "./components/TaskList"
 function App() {
   const [tasks, setTasks] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState("Все");
+  const [statusFilter, setStatusFilter] = useState ("Все")
 
   // Обработка добавления новой задачи
   const handleAddTask = (newTask) => {
@@ -22,17 +23,41 @@ function App() {
     setCategoryFilter(category);
   };
 
-  const filteredTasks = categoryFilter === "Все"
-  ? tasks
-  : tasks.filter((task) => task.category === categoryFilter);
+  const filteredTasks = tasks
+    .filter((task) => 
+    categoryFilter === "Все" ? true : task.category === categoryFilter
+  )
+  .filter((task) => 
+    statusFilter === "Все"
+    ? true
+    : statusFilter === "Выполнено"
+    ? task.completed 
+    : !task.completed
+  );
+
+  const handleStatusChange = (status) => {
+    setStatusFilter(status);
+  };
+
+  const handleToggleComplete = (idToToggle) => {
+    setTasks((prev) =>
+      prev.map((task)=>
+        task.id === idToToggle ? {...task, completed: !task.completed} : task
+      )
+    )
+  };
 
   return (
     <div style={{padding: "20px", maxWidth: "600px", margin: "0 auto"}}>
       <h1>Taskify</h1>
       <TaskForm onAdd={handleAddTask}/>
-      <CategoryFilter />
-      <StatusFilter />
-      <TaskList tasks={filteredTasks} onDelete={handleDeleteTask}/>
+      <CategoryFilter onCategoryChange={handleCategoryChange} />
+      <StatusFilter onStatusChange={handleStatusChange} />
+      <TaskList 
+        tasks={filteredTasks} 
+        onDelete={handleDeleteTask}
+        onToggle={handleToggleComplete}
+        />
     </div>
   );
 }
