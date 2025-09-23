@@ -1,5 +1,7 @@
 body {
-  font-family: Papyrus, fantasy, sans-serif;
+  font-family: "WDXL Lubrifont TC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   background-color: rgba(213, 226, 255, 0.824);
   padding: 30px
 }
@@ -10,7 +12,7 @@ body {
   background: white;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 10 px rgba(0, 0, 0, 0.1)
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1)
 }
 
 h1 {
@@ -24,34 +26,50 @@ input[type="text"] {
 }
 
 form {
-  width: 100%;
-  margin-bottom: 12px;
+ display: flex;
+ flex-wrap: wrap;
+ align-items: center;
+ gap: 12px;
+ margin-bottom: 12px
 }
 
 select {
-  width: 30%;
+  flex: 0 0 180px;
   margin-bottom: 12px;
 }
 
-input {
-  width: 10%;
-  margin-bottom: 12px;
+input[type='text'],
+select,
+button {
+  height: 44px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 6px;
 }
 
 input[type="text"],
 select {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  padding:10px 14px;
+  border:1px solid #ccc;
+  flex:1 1 240px;    
 }
 
-button {
-  padding: 10px 14px;
-  background-color: #aa1730;
-  border: none;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
+form input[type='text'],
+form select,
+form button {
+  margin-bottom: 0px;
+}
+
+button{
+  display:inline-flex;      /* центрируем текст по вертикали */
+  align-items:center;
+  justify-content:center;
+  padding:0 14px;           /* высоту уже задали, поэтому только горизонтальные отступы */
+  border:none;
+  background:#aa1730;
+  color:#fff;
+  cursor:pointer;
 }
 
 button:hover {
@@ -84,5 +102,42 @@ li button {
  
 li button:hover {
   background-color: #710d20;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  input[type='text'],
+  select,
+  button {
+    width: 100% !important;
+    flex: none;
+  }
+
+  button {
+    margin-top: 6px;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  li button {
+    margin-left: 0;
+    align-self: flex-end;
+  }
 }
 
